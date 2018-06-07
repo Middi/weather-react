@@ -1,0 +1,42 @@
+%font {
+    font-family: 'lato', sans-serif;
+    font-weight: 400;  
+}
+
+h1 {
+    @extend %font;
+    font-size: 7.75rem;
+    padding: .8rem 0;
+    font-weight: 300;
+}
+
+h2 {
+    @extend %font;
+    font-size: 1.6rem;
+    padding: 1rem 0;
+}
+
+p {
+    @extend %font;
+    color: #888888;
+    font-size: 1.2rem;
+}
+
+.App {
+    width: 530px;
+    background-color: #fbfafa;
+    position: relative;
+    border-radius: 1.2rem;
+    box-shadow: 0 50px 30px -40px #777777;
+}
+
+.icon {
+    width: 250px;
+    position: absolute;
+    top: -60px;
+    right: -34px;
+}
+
+.details {
+    padding: 4rem;
+}
