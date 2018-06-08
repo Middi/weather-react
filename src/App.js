@@ -32,15 +32,17 @@ class App extends Component {
       var url = "https://cors-anywhere.herokuapp.com/https://ipinfo.io/geo";
       axios.get(url)
       .then(res => {
-        console.log(res);
+        var loc = res.data.loc.split(',');
+        var lat = loc[0];
+        var lon = loc[1];
 
-        // this.setState(...this.state, {
-        //   coords: {
-        //     lat: lat,
-        //     lon: lon
-        //   }
-        // })
-        // this.fetch();
+        this.setState(...this.state, {
+          coords: {
+            lat: lat,
+            lon: lon
+          }
+        })
+        this.fetch();
       })
       .catch(err => console.log(err))
       })
