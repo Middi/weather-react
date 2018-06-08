@@ -27,22 +27,20 @@ class App extends Component {
         }
       })
       this.fetch();
-    }, pos => {
+    }, () => {
 
       var url = "https://cors-anywhere.herokuapp.com/https://ipinfo.io/geo";
       axios.get(url)
       .then(res => {
-        var loc = res.loc.split(',');
-        var lat = loc[0];
-        var lon = loc[1];
+        console.log(res);
 
-        this.setState(...this.state, {
-          coords: {
-            lat: lat,
-            lon: lon
-          }
-        })
-        this.fetch();
+        // this.setState(...this.state, {
+        //   coords: {
+        //     lat: lat,
+        //     lon: lon
+        //   }
+        // })
+        // this.fetch();
       })
       .catch(err => console.log(err))
       })
