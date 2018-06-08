@@ -7,11 +7,31 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+    coords : {
+      lat: '49.9139',
+      lon: '32.7522'
+    }
+    };
+  }
+
+  geo = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+
+      this.setState(...this.state, {
+        coords: {
+          lat: lat,
+          lon: lon
+        }
+      })
+      this.fetch();
+    });
   }
 
   fetch = () => {
-    axios.get('https://fcc-weather-api.glitch.me/api/current?lat=59.9139&lon=10.7522')
+    axios.get(`https://fcc-weather-api.glitch.me/api/current?lat=${this.state.coords.lat}&lon=${this.state.coords.lon}`)
       .then((res) => {
         console.log(res);
         this.setState(...this.state, {
@@ -44,7 +64,7 @@ class App extends Component {
   
 
   componentDidMount() {
-    this.fetch();
+    this.geo();
     this.date(new Date());
   }
 
@@ -53,10 +73,24 @@ class App extends Component {
     return (
       <div className="App">
         <img className="icon" src={Icon} alt="sunny icon" />
-        <div className="details">
-          <h1>{this.state.temp}°</h1>
-          <h2>{this.state.desc}</h2>
-          <p>{this.state.city}, {this.state.date}</p>
+        <div className="card">
+          {this.state.city
+            ?
+            <div className="details">
+              <h1>{Math.floor(this.state.temp)}°</h1>
+              <h2>{this.state.desc}</h2>
+              <p>{this.state.city}, {this.state.date}</p>
+            </div>
+            :
+            <div className="spinner">
+              <div className="right-side">
+                  <div className="bar"></div>
+              </div>
+              <div className="left-side">
+                  <div className="bar"></div>
+              </div>
+            </div>
+          }
         </div>
       </div>
     );
