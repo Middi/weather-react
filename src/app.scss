@@ -28,6 +28,7 @@ p {
     border-radius: 1.2rem;
     box-shadow: 0 50px 30px -40px #777777;
     margin-bottom: 16%;
+    animation: drop-card-fade-shadow .8s linear forwards;
 }
 
 .card {
@@ -42,10 +43,11 @@ p {
     position: absolute;
     top: -60px;
     right: -34px;
+    animation: drop-card 1.4s linear forwards;
 }
 
 .details {
-    animation: fade .6s linear forwards;
+    animation: drop-card-fade 1s linear forwards;
 }
 
 
@@ -112,8 +114,34 @@ p {
     100% {transform: rotate(-360deg)}
 }
 
+@keyframes drop-card {
+    0% {transform: translateY(-16px)}
+    40% {transform: translateY(-10px)}
+    100% {transform: translateY(0px)}
+}
 
-@keyframes fade {
-    0% {opacity: 0}
-    100% {opacity: 1}
+@keyframes drop-card-fade {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    40% {transform: translateY(-15px)}
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes drop-card-fade-shadow {
+    0% {
+        box-shadow: 0 90px 30px -40px #777777;
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    40% {transform: translateY(-15px)}
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+        box-shadow: 0 50px 30px -40px #777777;
+    }
 }
