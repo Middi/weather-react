@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   fetch = () => {
-    axios.get(`https://fcc-weather-api.glitch.me/api/current?lat=${this.state.coords.lat}&lon=${this.state.coords.lon}`)
+    axios.get(`https://cors-anywhere.herokuapp.com/https://fcc-weather-api.glitch.me/api/current?lat=${this.state.coords.lat}&lon=${this.state.coords.lon}`)
       .then((res) => {
         console.log(res);
         this.setState(...this.state, {
