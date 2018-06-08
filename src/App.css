@@ -5,6 +5,7 @@ h1, h2, p {
 h1 {
   font-size: 7.75rem;
   padding: .8rem 0;
+  margin-left: -.6rem;
   font-weight: 300; }
 
 h2 {
@@ -121,7 +122,7 @@ p {
 
 @keyframes drop-card-fade-shadow {
   0% {
-    box-shadow: 0 90px 30px -40px #777777;
+    box-shadow: 0 50px 30px 0px #777777;
     transform: translateY(-20px);
     opacity: 0; }
   40% {
